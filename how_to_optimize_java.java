@@ -1,36 +1,34 @@
+// This imports the Scanner class so I can use it to read input streams like System.in
 import java.util.Scanner;
 
-// The input must be three letters then any three numbers EX: abc 234 OR dlw 649
-// This uses printf to format the output
-// This is brute force solution
-
+// To optimize code put all repeated code into for loop
+// Use for loop b/c  exact number of iterations is known. Other wise use while loop
 public class how_to_optimize_java {
 
     public static void main(String[] args) {
+//Turning the Scanner object into a variable so it can be used
         Scanner scanner = new Scanner(System.in);
-
-        String input = scanner.nextLine();
-        String input2 = scanner.nextLine();
-        String input3 = scanner.nextLine();
-
-        String[] output = input.split(" ");
-        String insideOutputStr = output[0];
-        int insideOutputInt = Integer.parseInt(output[1]);
-
-        String[] output2 = input2.split(" ");
-        String insideOutput2Str = output2[0];
-        int insideOutput2Int = Integer.parseInt(output2[1]);
-
-        String[] output3 = input3.split(" ");
-        String insideOutput3Str = output3[0];
-        int insideOutput3Int = Integer.parseInt(output3[1]);
-
+//output decoration
         System.out.println("================================");
-        System.out.printf("%-15s%03d\n", insideOutputStr, insideOutputInt);
-        System.out.printf("%-15s%03d\n", insideOutput2Str, insideOutput2Int);
-        System.out.printf("%-15s%03d\n", insideOutput3Str, insideOutput3Int);
+// Only need 3 iterations, number of iterations are known so use for loop and not while loop
+        for (int i = 0; i < 3; i++) {
+//nextLine() method reads input from scanner object created earlier, putting this into var named 'input'
+            String input = scanner.nextLine();
+//Creating array of strings as a variable named 'output'
+//The input stream in 'input' var splits into the array at every space, which is defined in split(" ")
+            String[] output = input.split(" ");
+// creating var to hold the first string in the 'output' array of strings which comes from input stream
+            String outputStr = output[0];
+//Turning the 2nd input collected in the 'output' var into an integer b/c I want to collect numbers for the 2nd input
+            int outputInt = Integer.parseInt(output[1]);
+//Using Printf to format the output and setting the vars in the params I want to output
+//
+            System.out.printf("%-15s%03d\n", outputStr, outputInt);
+        }
+
         System.out.println("================================");
     }
+// This repeats 3 times to optimize the brute force solution earlier
 }
 
 
